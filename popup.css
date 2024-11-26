@@ -1,0 +1,154 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* other styles */
+  background-image: url('assets/back.png');
+    background-size: cover;
+    /* Cover the entire space */
+    background-repeat: no-repeat;
+    max-height: 40px;
+    width: max-content;
+}
+.container {
+  width: 280px;
+  color: #314d3e;
+  display: flex;
+  padding: 15px 0;
+}
+button {
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: #008080;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  #login-form-button {
+    margin-left: auto; /* Push the button to the right */
+  }
+
+button:disabled {
+  background-color: #ccc; /* Change to a color that represents a disabled state */
+  color: #666; /* Change to a color that contrasts with the disabled background */
+  cursor: not-allowed;
+}
+
+button:hover:enabled {
+  background-color: #006666; /* Change to the hover color for enabled buttons */
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.textbox {
+  width: 100%;
+  font-size: 12px;
+  margin: 0;
+  padding: 0px 2px;
+}
+
+.textbox:focus {
+  outline: 0;
+  border-color: #66afe9;
+}
+
+.bookmarks {
+  margin: 5px 5px;
+  padding: 3px;
+}
+
+.bookmark {
+  display: flex;
+  border-bottom-color: #00254d;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-radius: 0.8rem;
+  padding: 3px;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+}
+
+.bookmark-title {
+  padding-left: 2px;
+}
+
+.bookmark-controls img {
+  margin: 0 4px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.bookmark-controls {
+  flex: auto;
+  text-align: right;
+}
+.records {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+}
+
+.record-name {
+  text-overflow: ellipsis;
+  word-break: break-word;
+  line-height: 1.8;
+  align-self: flex-start;
+  margin: 2px;
+  /* flex-grow: 1; */
+}
+
+/* .record-control {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-self: flex-start; 
+} */
+.imgButton {
+  width: 30px;
+  height: 30px;
+}
+
+.login-form {
+  display: none;
+}
+
+.container {
+  width: 280px;
+  color: #314d3e;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* Align items to the right */
+  padding: 15px 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  /* Align buttons to the right */
+  width: 100%;
+  /* Full width for consistent right alignment */
+  gap: 10px;
+  /* Adds space between buttons */
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #008080;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

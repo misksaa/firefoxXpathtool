@@ -1,4 +1,4 @@
-html, body {
+.pathtool {
   margin: 0;
   padding: 0;
   /* other styles */
@@ -10,13 +10,13 @@ html, body {
     /* max-height: 200px;  */
     width: max-content;
 }
-.container {
+.pathtool .container {
   width: 280px;
   color: #314d3e;
   display: flex;
   padding: 15px 0;
 }
-button {
+.pathtool button {
   margin-right: 10px;
   padding: 10px 15px;
   background-color: #008080;
@@ -29,40 +29,40 @@ button {
     margin-left: auto; /* Push the button to the right */
   }
 
-button:disabled {
+.pathtool button:disabled {
   background-color: #ccc; /* Change to a color that represents a disabled state */
   color: #666; /* Change to a color that contrasts with the disabled background */
   cursor: not-allowed;
 }
 
-button:hover:enabled {
+.pathtool button:hover:enabled {
   background-color: #006666; /* Change to the hover color for enabled buttons */
 }
 
-.title {
+.pathtool .title {
   font-size: 14px;
   font-weight: bold;
   padding: 8px;
 }
 
-.textbox {
+.pathtool .textbox {
   width: 100%;
   font-size: 12px;
   margin: 0;
   padding: 0px 2px;
 }
 
-.textbox:focus {
+.pathtool .textbox:focus {
   outline: 0;
   border-color: #66afe9;
 }
 
-.bookmarks {
+.pathtool .bookmarks {
   margin: 5px 5px;
   padding: 3px;
 }
 
-.bookmark {
+.pathtool .bookmark {
   display: flex;
   border-bottom-color: #00254d;
   border-bottom-width: 1px;
@@ -90,10 +90,12 @@ button:hover:enabled {
 }
 .records {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
 }
 .record {
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,7 +127,7 @@ button:hover:enabled {
   display: none;
 }
 
-.container {
+.pathtool .container {
   width: 280px;
   color: #314d3e;
   display: flex;
@@ -145,7 +147,7 @@ button:hover:enabled {
   /* Adds space between buttons */
 }
 
-button {
+.pathtool button {
   padding: 10px 15px;
   background-color: #008080;
   color: #ffffff;

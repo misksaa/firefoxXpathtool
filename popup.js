@@ -170,16 +170,24 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       value: name,
     });
   });
-  newCssButton?.addEventListener("click", async () => {
-    console.log("New CSS Button clicked!");
-    const activeTab = await getActiveTabURL(); // get url of active tab
-    const name = prompt("قم بإدخال اسم الاعدادات الجديدة:");
-   browser.tabs.sendMessage(activeTab.id, {
-      // send Create to content js
-      type: "CREATECSS",
-      value: name,
-    });
+
+  // newCssButton?.addEventListener("click", async () => {
+  //   console.log("New CSS Button clicked!");
+  //   const activeTab = await getActiveTabURL(); // get url of active tab
+  //   const name = prompt("قم بإدخال اسم الاعدادات الجديدة:");
+  //  browser.tabs.sendMessage(activeTab.id, {
+  //     // send Create to content js
+  //     type: "CREATECSS",
+  //     value: name,
+  //   });
+  // });
+newCssButton?.addEventListener("click", async () => {
+  console.log("New CSS Button clicked!");
+  const activeTab = await getActiveTabURL(); // Get URL of active tab
+  browser.tabs.sendMessage(activeTab.id, {
+    type: "PROMPT_CSS", // Send request to display prompt
   });
+});
 
   saveButton?.addEventListener("click", async () => {
     console.log("Save Button clicked!");

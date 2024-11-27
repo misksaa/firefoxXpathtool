@@ -56,12 +56,23 @@
         parameters: [],
       };
     } 
-    else if (type === "CREATECSS") {
+    // else if (type === "CREATECSS") {
+    //   removeExistingTooltip();
+    //   allowCss = true;
+    //   newRecord = {
+    //     url: currentPage,
+    //     name: value,
+    //     // type:"css",
+    //     parameters: [],
+    //   };
+    // } 
+    else if (type === "PROMPT_CSS") {
+      const name = prompt("قم بإدخال اسم الاعدادات الجديدة:"); // Display prompt in the tab
       removeExistingTooltip();
       allowCss = true;
       newRecord = {
         url: currentPage,
-        name: value,
+        name: name,
         // type:"css",
         parameters: [],
       };

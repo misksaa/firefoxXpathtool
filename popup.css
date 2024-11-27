@@ -6,7 +6,8 @@ html, body {
     background-size: cover;
     /* Cover the entire space */
     background-repeat: no-repeat;
-    max-height: 40px;
+    height: max-content;
+    /* max-height: 200px;  */
     width: max-content;
 }
 .container {

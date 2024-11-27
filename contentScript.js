@@ -40,7 +40,7 @@
     document.addEventListener('mouseout', removeBorderFromLastElement);
 //-----------------------------------------------------------------------------
   // when it recive message from background
-  chrome.runtime.onMessage.addListener((obj, sender, response) => {
+ browser.runtime.onMessage.addListener((obj, sender, response) => {
     const { type, value, pageId } = obj;
 
     if (type === "NEW") {
@@ -67,6 +67,7 @@
       };
     } 
     else if (type === "SAVE") {
+      console.log("save recived")
       allowXpath = false;
       allowCss = false;
       saveRecord();
@@ -301,7 +302,7 @@ function showModal(parameter, extracted_value) {
   const fetchRecords = () => {
     return new Promise((resolve) => {
       // promise to be async function
-      chrome.storage.sync.get([currentPage], (obj) => {
+     browser.storage.sync.get([currentPage], (obj) => {
         // get from storage by page id
         resolve(obj[currentPage] ? JSON.parse(obj[currentPage]) : []); // if there are any bookmarks parse it if not return empty []
       });
@@ -316,10 +317,10 @@ function showModal(parameter, extracted_value) {
     // const newkey = currentPage + Date.now();
     const newkey = "(" + currentPage + ")" + Date.now();
     //const newkey ="ah"
-    chrome.storage.sync.set({ [newkey]: newRecord }, function () {
-      //chrome.storage.sync.set({ [newkey]: JSON.stringify(newRecord) }, function() {
-      if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError);
+   browser.storage.sync.set({ [newkey]: newRecord }, function () {
+      //browser.storage.sync.set({ [newkey]: JSON.stringify(newRecord) }, function() {
+      if (browser.runtime.lastError) {
+        console.error(browser.runtime.lastError);
       } else {
         alert("تم حفظ البيانات بنجاح");
       }
@@ -342,7 +343,7 @@ const reverseOptionsMapping = {
     const existingPopups = document.querySelectorAll('.config-popup');
     existingPopups.forEach(popup => popup.remove());
 
-    chrome.storage.sync.get([storageKey], (result) => {
+   browser.storage.sync.get([storageKey], (result) => {
       const config = result[storageKey];
       // if (!config || !Array.isArray(config.parameters) || !config.type) {
       if (!config || !Array.isArray(config.parameters)) {
@@ -352,19 +353,9 @@ const reverseOptionsMapping = {
 
       // Determine the selection method based on config.type
       const selectElements = (selector) => {
-        // if (config.type === 'xpath') {
-        //   const xpathResult = document.evaluate(selector, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-        //   let elements = [];
-        //   for (let i = 0; i < xpathResult.snapshotLength; i++) {
-        //     elements.push(xpathResult.snapshotItem(i));
-        //   }
-        //   return elements;
-        // } else if (config.type === 'css') {
+    
           return Array.from(document.querySelectorAll(selector));
-        // } else {
-        //   console.error('Unsupported selector type:', config.type);
-        //   return [];
-        // }
+      
       };
 
       config.parameters.forEach((param) => {
@@ -398,7 +389,7 @@ const reverseOptionsMapping = {
   function hideConfigOnPage(storageKey) {
     console.log("Key to be hidden: " + storageKey);
 
-    chrome.storage.sync.get([storageKey], (result) => {
+   browser.storage.sync.get([storageKey], (result) => {
         const config = result[storageKey];
         // if (!config || !Array.isArray(config.parameters) || !config.type) {
         if (!config || !Array.isArray(config.parameters) ) {
@@ -436,7 +427,7 @@ const reverseOptionsMapping = {
 
   function downloadRecord(key, filename) {
     console.log(key);
-    chrome.storage.sync.get([key], (obj) => {
+   browser.storage.sync.get([key], (obj) => {
       // get from storage by page id
       downloadObjectAsJson(obj, filename + ".json");
     });
@@ -468,9 +459,9 @@ const reverseOptionsMapping = {
   }
 
   function saveToken(token) {
-    chrome.storage.sync.set({ token: token }, function () {
-      if (chrome.runtime.lastError) {
-        console.error(`Error saving token: ${chrome.runtime.lastError}`);
+   browser.storage.sync.set({ token: token }, function () {
+      if (browser.runtime.lastError) {
+        console.error(`Error saving token: ${browser.runtime.lastError}`);
       } else {
         console.log("Token saved successfully");
         alert("token saved successfully");
@@ -478,7 +469,7 @@ const reverseOptionsMapping = {
     });
   }
 function copyRecord(key) {
-  chrome.storage.sync.get([key], (obj) => {
+ browser.storage.sync.get([key], (obj) => {
     // Convert the object to a JSON string
     const jsonString = JSON.stringify(obj[key], null, 2);
     // Create a temporary textarea element
@@ -501,3 +492,5 @@ function copyRecord(key) {
 }
   newPageLoaded();
 })();
+
+
